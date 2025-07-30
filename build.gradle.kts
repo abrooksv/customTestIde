@@ -1,5 +1,6 @@
 import org.jetbrains.changelog.Changelog
 import org.jetbrains.changelog.markdownToHTML
+import org.jetbrains.intellij.platform.gradle.IntelliJPlatformType
 import org.jetbrains.intellij.platform.gradle.TestFrameworkType
 
 plugins {
@@ -150,6 +151,13 @@ intellijPlatformTesting {
             plugins {
                 robotServerPlugin()
             }
+        }
+    }
+
+    testIde {
+        create("unitTestRegression") {
+            type = provider { IntelliJPlatformType.IntellijIdeaCommunity }
+            version = provider { "2025.1" }
         }
     }
 }
